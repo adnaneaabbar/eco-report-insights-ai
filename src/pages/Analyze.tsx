@@ -8,11 +8,9 @@ import { Progress } from '@/components/ui/progress';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
 interface CarbonData {
-  scope: string;
   category: string;
   value: number;
   unit: string;
-  percentage: number;
 }
 
 const Analyze = () => {
@@ -23,30 +21,19 @@ const Analyze = () => {
 
   // Données d'exemple pour la démonstration
   const mockData: CarbonData[] = [
-    { scope: 'Scope 1', category: 'Combustion stationnaire', value: 1250, unit: 'tCO2e', percentage: 15.6 },
-    { scope: 'Scope 1', category: 'Combustion mobile', value: 850, unit: 'tCO2e', percentage: 10.6 },
-    { scope: 'Scope 1', category: 'Émissions fugitives', value: 320, unit: 'tCO2e', percentage: 4.0 },
-    { scope: 'Scope 2', category: 'Électricité achetée', value: 2100, unit: 'tCO2e', percentage: 26.3 },
-    { scope: 'Scope 2', category: 'Chaleur/vapeur achetée', value: 180, unit: 'tCO2e', percentage: 2.3 },
-    { scope: 'Scope 3', category: 'Transport amont', value: 950, unit: 'tCO2e', percentage: 11.9 },
-    { scope: 'Scope 3', category: 'Déplacements professionnels', value: 680, unit: 'tCO2e', percentage: 8.5 },
-    { scope: 'Scope 3', category: 'Transport aval', value: 1200, unit: 'tCO2e', percentage: 15.0 },
-    { scope: 'Scope 3', category: 'Autres activités', value: 470, unit: 'tCO2e', percentage: 5.9 },
+    { category: 'Scope 1 emissions', value: 2420, unit: 'tCO2e' },
+    { category: 'Scope 2 location-based emissions', value: 1850, unit: 'tCO2e' },
+    { category: 'Scope 2 market-based emissions', value: 1650, unit: 'tCO2e' },
+    { category: 'Scope 3 emissions', value: 3300, unit: 'tCO2e' },
   ];
 
   const totalEmissions = mockData.reduce((sum, item) => sum + item.value, 0);
 
-  const getScopeTotal = (scope: string) => {
-    return mockData.filter(item => item.scope === scope).reduce((sum, item) => sum + item.value, 0);
-  };
-
-  const getScopeColor = (scope: string) => {
-    switch (scope) {
-      case 'Scope 1': return 'text-red-600 bg-red-50';
-      case 'Scope 2': return 'text-orange-600 bg-orange-50';
-      case 'Scope 3': return 'text-blue-600 bg-blue-50';
-      default: return 'text-gray-600 bg-gray-50';
-    }
+  const getCategoryColor = (category: string) => {
+    if (category.includes('Scope 1')) return 'text-red-700 bg-red-50';
+    if (category.includes('Scope 2')) return 'text-orange-700 bg-orange-50';
+    if (category.includes('Scope 3')) return 'text-blue-700 bg-blue-50';
+    return 'text-gray-700 bg-gray-50';
   };
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,11 +75,11 @@ const Analyze = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-white py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Analyse de Rapport RSE</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <h1 className="text-4xl font-bold text-foreground mb-4">Analyse de Rapport RSE</h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Téléchargez votre rapport RSE et obtenez l'extraction automatique de vos données carbone
           </p>
         </div>
@@ -100,9 +87,9 @@ const Analyze = () => {
         {!analysisComplete ? (
           <div className="max-w-2xl mx-auto">
             {/* Upload Section */}
-            <Card className="mb-8">
+            <Card className="mb-8 border-orange-200">
               <CardHeader>
-                <CardTitle className="flex items-center">
+                <CardTitle className="flex items-center text-foreground">
                   <Upload className="mr-2 h-5 w-5" />
                   Télécharger votre rapport RSE
                 </CardTitle>
@@ -111,7 +98,7 @@ const Analyze = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="border-2 border-dashed border-eco-300 rounded-lg p-8 text-center hover:border-eco-400 transition-colors">
+                <div className="border-2 border-dashed border-orange-300 rounded-lg p-8 text-center hover:border-primary transition-colors">
                   <input
                     type="file"
                     accept=".pdf"
@@ -120,11 +107,11 @@ const Analyze = () => {
                     id="file-upload"
                   />
                   <label htmlFor="file-upload" className="cursor-pointer">
-                    <FileText className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-                    <p className="text-lg font-medium text-gray-900 mb-2">
+                    <FileText className="mx-auto h-12 w-12 text-orange-400 mb-4" />
+                    <p className="text-lg font-medium text-foreground mb-2">
                       {file ? file.name : 'Cliquez pour sélectionner un fichier PDF'}
                     </p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-muted-foreground">
                       Ou glissez-déposez votre fichier ici
                     </p>
                   </label>
@@ -132,14 +119,14 @@ const Analyze = () => {
 
                 {file && (
                   <div className="mt-6 flex justify-between items-center">
-                    <div className="flex items-center text-sm text-gray-600">
+                    <div className="flex items-center text-sm text-muted-foreground">
                       <FileText className="mr-2 h-4 w-4" />
                       {file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)
                     </div>
                     <Button
                       onClick={handleAnalyze}
                       disabled={isAnalyzing}
-                      className="bg-eco-600 hover:bg-eco-700"
+                      className="bg-primary hover:bg-orange-600"
                     >
                       {isAnalyzing ? 'Analyse en cours...' : 'Analyser le rapport'}
                     </Button>
@@ -150,7 +137,7 @@ const Analyze = () => {
 
             {/* Progress Section */}
             {isAnalyzing && (
-              <Card>
+              <Card className="border-orange-200">
                 <CardHeader>
                   <CardTitle>Analyse en cours...</CardTitle>
                   <CardDescription>
@@ -159,7 +146,7 @@ const Analyze = () => {
                 </CardHeader>
                 <CardContent>
                   <Progress value={progress} className="mb-4" />
-                  <p className="text-sm text-gray-600 text-center">
+                  <p className="text-sm text-muted-foreground text-center">
                     {progress}% terminé
                   </p>
                 </CardContent>
@@ -170,65 +157,45 @@ const Analyze = () => {
           /* Results Section */
           <div className="space-y-8">
             {/* Summary Cards */}
-            <div className="grid md:grid-cols-4 gap-6">
-              <Card className="bg-gradient-to-br from-eco-50 to-green-50 border-eco-200">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-2xl font-bold text-eco-700">
-                    {totalEmissions.toLocaleString()}
-                  </CardTitle>
-                  <CardDescription className="text-eco-600">
-                    Total des émissions (tCO2e)
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-red-50 to-red-100 border-red-200">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-2xl font-bold text-red-700">
-                    {getScopeTotal('Scope 1').toLocaleString()}
-                  </CardTitle>
-                  <CardDescription className="text-red-600">
-                    Scope 1 (tCO2e)
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
               <Card className="bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-2xl font-bold text-orange-700">
-                    {getScopeTotal('Scope 2').toLocaleString()}
+                  <CardTitle className="text-2xl font-bold text-primary">
+                    {totalEmissions.toLocaleString()}
                   </CardTitle>
-                  <CardDescription className="text-orange-600">
-                    Scope 2 (tCO2e)
+                  <CardDescription className="text-orange-700">
+                    Total GHG Emissions (tCO2e)
                   </CardDescription>
                 </CardHeader>
               </Card>
 
-              <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-2xl font-bold text-blue-700">
-                    {getScopeTotal('Scope 3').toLocaleString()}
-                  </CardTitle>
-                  <CardDescription className="text-blue-600">
-                    Scope 3 (tCO2e)
-                  </CardDescription>
-                </CardHeader>
-              </Card>
+              {mockData.map((item, index) => (
+                <Card key={index} className="border-orange-200">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-lg font-bold text-foreground">
+                      {item.value.toLocaleString()}
+                    </CardTitle>
+                    <CardDescription className="text-muted-foreground text-sm">
+                      {item.category} ({item.unit})
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+              ))}
             </div>
 
             {/* Detailed Results Table */}
-            <Card>
+            <Card className="border-orange-200">
               <CardHeader className="flex flex-row items-center justify-between">
                 <div>
-                  <CardTitle className="flex items-center">
+                  <CardTitle className="flex items-center text-foreground">
                     <BarChart3 className="mr-2 h-5 w-5" />
-                    Détail des émissions par catégorie
+                    Détail des émissions GES
                   </CardTitle>
                   <CardDescription>
-                    Répartition complète de vos émissions carbone
+                    Répartition complète de vos émissions carbone par catégorie
                   </CardDescription>
                 </div>
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" className="border-orange-200 hover:bg-orange-50">
                   <Download className="mr-2 h-4 w-4" />
                   Exporter CSV
                 </Button>
@@ -237,40 +204,45 @@ const Analyze = () => {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Scope</TableHead>
-                      <TableHead>Catégorie</TableHead>
-                      <TableHead className="text-right">Émissions</TableHead>
+                      <TableHead>Catégorie d'émissions</TableHead>
+                      <TableHead className="text-right">Valeur</TableHead>
                       <TableHead className="text-right">Unité</TableHead>
-                      <TableHead className="text-right">% du total</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {mockData.map((item, index) => (
                       <TableRow key={index}>
                         <TableCell>
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${getScopeColor(item.scope)}`}>
-                            {item.scope}
+                          <span className={`px-3 py-1 rounded-full text-sm font-medium ${getCategoryColor(item.category)}`}>
+                            {item.category}
                           </span>
                         </TableCell>
-                        <TableCell className="font-medium">{item.category}</TableCell>
-                        <TableCell className="text-right font-mono">
+                        <TableCell className="text-right font-mono text-lg">
                           {item.value.toLocaleString()}
                         </TableCell>
-                        <TableCell className="text-right text-gray-500">{item.unit}</TableCell>
-                        <TableCell className="text-right">
-                          <span className="font-medium">{item.percentage}%</span>
-                        </TableCell>
+                        <TableCell className="text-right text-muted-foreground">{item.unit}</TableCell>
                       </TableRow>
                     ))}
+                    <TableRow className="border-t-2 border-orange-200 bg-orange-50">
+                      <TableCell className="font-bold">
+                        <span className="px-3 py-1 rounded-full text-sm font-bold bg-primary text-white">
+                          Total GHG Emissions
+                        </span>
+                      </TableCell>
+                      <TableCell className="text-right font-mono text-xl font-bold text-primary">
+                        {totalEmissions.toLocaleString()}
+                      </TableCell>
+                      <TableCell className="text-right text-muted-foreground font-medium">tCO2e</TableCell>
+                    </TableRow>
                   </TableBody>
                 </Table>
               </CardContent>
             </Card>
 
             {/* Success Alert */}
-            <Alert className="border-eco-200 bg-eco-50">
-              <AlertCircle className="h-4 w-4 text-eco-600" />
-              <AlertDescription className="text-eco-700">
+            <Alert className="border-orange-200 bg-orange-50">
+              <AlertCircle className="h-4 w-4 text-primary" />
+              <AlertDescription className="text-foreground">
                 <strong>Analyse terminée avec succès !</strong> Nous avons extrait {mockData.length} catégories 
                 d'émissions de votre rapport RSE. Les données sont prêtes à être exportées ou analysées davantage.
               </AlertDescription>
@@ -278,10 +250,10 @@ const Analyze = () => {
 
             {/* Action Buttons */}
             <div className="flex justify-center space-x-4">
-              <Button onClick={resetAnalysis} variant="outline">
+              <Button onClick={resetAnalysis} variant="outline" className="border-orange-200 hover:bg-orange-50">
                 Analyser un autre rapport
               </Button>
-              <Button className="bg-eco-600 hover:bg-eco-700">
+              <Button className="bg-primary hover:bg-orange-600">
                 <Download className="mr-2 h-4 w-4" />
                 Télécharger le rapport complet
               </Button>
