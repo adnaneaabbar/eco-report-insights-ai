@@ -47,7 +47,7 @@ const About = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-eco-50 to-green-50 py-20">
+      <section className="bg-gradient-to-br from-orange-50 to-orange-200 py-20">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 animate-fade-in">
             À propos d'IAXIS ESG
@@ -74,37 +74,37 @@ const About = () => {
                 des données Scope 1, 2 et 3 depuis vos rapports RSE, vous faisant gagner un temps précieux 
                 et vous permettant de vous concentrer sur les actions qui comptent vraiment.
               </p>
-              <div className="bg-eco-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold text-eco-700 mb-2">Impact à ce jour</h3>
+              <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-lg border border-orange-200">
+                <h3 className="text-xl font-semibold text-orange-700 mb-2">Impact à ce jour</h3>
                 <div className="grid grid-cols-2 gap-4 text-center">
                   <div>
-                    <div className="text-2xl font-bold text-eco-600">500+</div>
+                    <div className="text-2xl font-bold text-orange-600">500+</div>
                     <div className="text-sm text-gray-600">Rapports analysés</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-eco-600">200+</div>
+                    <div className="text-2xl font-bold text-orange-600">200+</div>
                     <div className="text-sm text-gray-600">Entreprises clientes</div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-eco-100 to-green-100 p-8 rounded-2xl">
+            <div className="bg-gradient-to-br from-orange-100 to-orange-200 p-8 rounded-2xl border border-orange-300">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">Pourquoi c'est important ?</h3>
               <ul className="space-y-4">
                 <li className="flex items-start">
-                  <div className="bg-eco-500 w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="bg-orange-500 w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-700">
                     <strong>Urgence climatique :</strong> Les entreprises doivent agir rapidement pour réduire leurs émissions.
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <div className="bg-eco-500 w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="bg-orange-500 w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-700">
                     <strong>Complexité des données :</strong> L'analyse manuelle des rapports RSE est chronophage et sujette aux erreurs.
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <div className="bg-eco-500 w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="bg-orange-500 w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-700">
                     <strong>Besoin de précision :</strong> Des données fiables sont essentielles pour prendre les bonnes décisions.
                   </span>
@@ -116,7 +116,7 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gradient-to-br from-orange-50 to-orange-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos Valeurs</h2>
@@ -127,10 +127,18 @@ const About = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
+              <Card key={index} className="text-center hover:shadow-xl transition-all duration-300 border-orange-200 hover:border-orange-300">
                 <CardHeader>
-                  <div className="mx-auto bg-eco-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-                    <value.icon className="h-8 w-8 text-eco-600" />
+                  <div className={`mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 ${
+                    index === 0 ? 'bg-orange-100' :
+                    index === 1 ? 'bg-orange-200' :
+                    index === 2 ? 'bg-orange-300' : 'bg-orange-400'
+                  }`}>
+                    <value.icon className={`h-8 w-8 ${
+                      index === 0 ? 'text-orange-600' :
+                      index === 1 ? 'text-orange-700' :
+                      index === 2 ? 'text-orange-800' : 'text-orange-900'
+                    }`} />
                   </div>
                   <CardTitle className="text-xl text-gray-900">{value.title}</CardTitle>
                 </CardHeader>
@@ -158,13 +166,17 @@ const About = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {team.map((member, index) => (
               <div key={index} className="text-center">
-                <div className="bg-gradient-to-br from-eco-100 to-green-100 w-32 h-32 rounded-full mx-auto mb-6 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-eco-600">
+                <div className={`w-32 h-32 rounded-full mx-auto mb-6 flex items-center justify-center shadow-lg ${
+                  index === 0 ? 'bg-gradient-to-br from-orange-300 to-orange-400' :
+                  index === 1 ? 'bg-gradient-to-br from-orange-400 to-orange-500' :
+                  'bg-gradient-to-br from-orange-500 to-orange-600'
+                }`}>
+                  <span className="text-2xl font-bold text-white">
                     {member.name.split(' ').map(n => n[0]).join('')}
                   </span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
-                <p className="text-eco-600 font-medium mb-4">{member.role}</p>
+                <p className="text-orange-600 font-medium mb-4">{member.role}</p>
                 <p className="text-gray-600">{member.description}</p>
               </div>
             ))}
@@ -173,7 +185,7 @@ const About = () => {
       </section>
 
       {/* Technology Section */}
-      <section className="py-20 bg-eco-50">
+      <section className="py-20 bg-gradient-to-br from-orange-50 to-orange-200">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Notre Technologie</h2>
           <p className="text-xl text-gray-600 mb-8">
@@ -181,19 +193,19 @@ const About = () => {
             entraînés sur des milliers de rapports RSE pour garantir une extraction 
             précise et fiable de vos données carbone.
           </p>
-          <div className="bg-white p-8 rounded-2xl shadow-lg">
+          <div className="bg-white p-8 rounded-2xl shadow-lg border border-orange-200">
             <h3 className="text-2xl font-semibold text-gray-900 mb-4">Nos Capacités</h3>
             <div className="grid md:grid-cols-3 gap-6 text-left">
-              <div>
-                <h4 className="font-semibold text-eco-600 mb-2">Scope 1</h4>
+              <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                <h4 className="font-semibold text-orange-600 mb-2">Scope 1</h4>
                 <p className="text-sm text-gray-600">Émissions directes de sources détenues ou contrôlées</p>
               </div>
-              <div>
-                <h4 className="font-semibold text-eco-600 mb-2">Scope 2</h4>
+              <div className="bg-orange-100 p-4 rounded-lg border border-orange-300">
+                <h4 className="font-semibold text-orange-700 mb-2">Scope 2</h4>
                 <p className="text-sm text-gray-600">Émissions indirectes liées à l'énergie achetée</p>
               </div>
-              <div>
-                <h4 className="font-semibold text-eco-600 mb-2">Scope 3</h4>
+              <div className="bg-orange-200 p-4 rounded-lg border border-orange-400">
+                <h4 className="font-semibold text-orange-800 mb-2">Scope 3</h4>
                 <p className="text-sm text-gray-600">Autres émissions indirectes de la chaîne de valeur</p>
               </div>
             </div>

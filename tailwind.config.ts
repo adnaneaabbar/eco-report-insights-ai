@@ -64,16 +64,16 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				orange: {
-					50: '#fff7ed',
-					100: '#ffedd5',
-					200: '#fed7aa',
-					300: '#fdba74',
-					400: '#fb923c',
-					500: '#FF6300',
-					600: '#ea580c',
-					700: '#c2410c',
-					800: '#9a3412',
-					900: '#7c2d12',
+					50: 'hsl(var(--orange-50))',
+					100: 'hsl(var(--orange-100))',
+					200: 'hsl(var(--orange-200))',
+					300: 'hsl(var(--orange-300))',
+					400: 'hsl(var(--orange-400))',
+					500: 'hsl(var(--orange-500))',
+					600: 'hsl(var(--orange-600))',
+					700: 'hsl(var(--orange-700))',
+					800: 'hsl(var(--orange-800))',
+					900: 'hsl(var(--orange-900))',
 				}
 			},
 			borderRadius: {

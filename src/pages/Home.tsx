@@ -42,15 +42,15 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-eco-50 to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100">
       {/* Hero Section */}
       <section className="relative pt-20 pb-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-eco-600/10 to-green-600/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-orange-600/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center animate-fade-in">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
               Analysez vos données
-              <span className="text-eco-600"> carbone </span>
+              <span className="text-orange-600"> carbone </span>
               en quelques secondes
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
@@ -59,12 +59,12 @@ const Home = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/analyze">
-                <Button size="lg" className="bg-eco-600 hover:bg-eco-700 text-white px-8 py-3 text-lg">
+                <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg shadow-lg">
                   Commencer l'analyse
                 </Button>
               </Link>
               <Link to="/about">
-                <Button variant="outline" size="lg" className="border-eco-600 text-eco-600 hover:bg-eco-50 px-8 py-3 text-lg">
+                <Button variant="outline" size="lg" className="border-orange-600 text-orange-600 hover:bg-orange-50 px-8 py-3 text-lg">
                   En savoir plus
                 </Button>
               </Link>
@@ -87,10 +87,16 @@ const Home = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="border-eco-200 hover:shadow-lg transition-shadow duration-300">
+              <Card key={index} className="border-orange-200 hover:shadow-xl transition-all duration-300 hover:border-orange-300">
                 <CardHeader className="text-center">
-                  <div className="mx-auto bg-eco-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-                    <feature.icon className="h-8 w-8 text-eco-600" />
+                  <div className={`mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 ${
+                    index === 0 ? 'bg-orange-100' : 
+                    index === 1 ? 'bg-orange-200' : 'bg-orange-300'
+                  }`}>
+                    <feature.icon className={`h-8 w-8 ${
+                      index === 0 ? 'text-orange-600' : 
+                      index === 1 ? 'text-orange-700' : 'text-orange-800'
+                    }`} />
                   </div>
                   <CardTitle className="text-xl text-gray-900">{feature.title}</CardTitle>
                 </CardHeader>
@@ -106,7 +112,7 @@ const Home = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-eco-50">
+      <section className="py-20 bg-gradient-to-br from-orange-50 to-orange-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -120,8 +126,12 @@ const Home = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
               <div key={index} className="text-center group">
-                <div className="mx-auto bg-white w-20 h-20 rounded-full flex items-center justify-center shadow-lg mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <benefit.icon className="h-10 w-10 text-eco-600" />
+                <div className={`mx-auto w-20 h-20 rounded-full flex items-center justify-center shadow-lg mb-6 group-hover:scale-110 transition-transform duration-300 ${
+                  index === 0 ? 'bg-gradient-to-br from-orange-400 to-orange-500' :
+                  index === 1 ? 'bg-gradient-to-br from-orange-500 to-orange-600' :
+                  'bg-gradient-to-br from-orange-600 to-orange-700'
+                }`}>
+                  <benefit.icon className="h-10 w-10 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">{benefit.title}</h3>
                 <p className="text-gray-600">{benefit.description}</p>
@@ -132,16 +142,16 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-eco-600">
+      <section className="py-20 bg-gradient-to-r from-orange-600 to-orange-700">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Prêt à optimiser votre empreinte carbone ?
           </h2>
-          <p className="text-xl text-eco-100 mb-8">
+          <p className="text-xl text-orange-100 mb-8">
             Rejoignez les entreprises qui utilisent déjà IAXIS ESG pour leurs analyses RSE
           </p>
           <Link to="/analyze">
-            <Button size="lg" variant="secondary" className="bg-white text-eco-600 hover:bg-gray-100 px-8 py-3 text-lg">
+            <Button size="lg" variant="secondary" className="bg-white text-orange-600 hover:bg-orange-50 px-8 py-3 text-lg shadow-lg">
               Analyser mon rapport maintenant
             </Button>
           </Link>

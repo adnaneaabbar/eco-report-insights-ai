@@ -47,6 +47,18 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 0 0% 0%;
     --sidebar-border: 22 30% 91%;
     --sidebar-ring: 22 100% 50%;
+
+    /* Orange color variations */
+    --orange-50: 22 100% 97%;
+    --orange-100: 22 100% 94%;
+    --orange-200: 22 100% 87%;
+    --orange-300: 22 100% 76%;
+    --orange-400: 22 100% 63%;
+    --orange-500: 22 100% 50%;
+    --orange-600: 22 100% 44%;
+    --orange-700: 22 100% 37%;
+    --orange-800: 22 100% 29%;
+    --orange-900: 22 100% 22%;
   }
 
   .dark {
@@ -86,6 +98,18 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 0 0% 90%;
     --sidebar-border: 0 0% 10%;
     --sidebar-ring: 22 100% 50%;
+
+    /* Orange color variations for dark mode */
+    --orange-50: 22 100% 8%;
+    --orange-100: 22 100% 12%;
+    --orange-200: 22 100% 18%;
+    --orange-300: 22 100% 24%;
+    --orange-400: 22 100% 35%;
+    --orange-500: 22 100% 50%;
+    --orange-600: 22 100% 60%;
+    --orange-700: 22 100% 70%;
+    --orange-800: 22 100% 80%;
+    --orange-900: 22 100% 90%;
   }
 }
 
