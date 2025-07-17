@@ -50,7 +50,7 @@ const About = () => {
       <section className="bg-gradient-to-br from-eco-50 to-green-50 py-20">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 animate-fade-in">
-            À propos d'EcoAnalyzer
+            À propos d'IAXIS ESG
           </h1>
           <p className="text-xl text-gray-600 mb-8 animate-fade-in">
             Notre mission est de démocratiser l'analyse des données carbone pour toutes les entreprises, 
@@ -70,7 +70,7 @@ const About = () => {
                 à des outils simples et efficaces pour mesurer et réduire son empreinte carbone.
               </p>
               <p className="text-lg text-gray-600 mb-6">
-                EcoAnalyzer utilise l'intelligence artificielle pour automatiser l'extraction 
+                IAXIS ESG utilise l'intelligence artificielle pour automatiser l'extraction 
                 des données Scope 1, 2 et 3 depuis vos rapports RSE, vous faisant gagner un temps précieux 
                 et vous permettant de vous concentrer sur les actions qui comptent vraiment.
               </p>
@@ -177,7 +177,7 @@ const About = () => {
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Notre Technologie</h2>
           <p className="text-xl text-gray-600 mb-8">
-            EcoAnalyzer utilise des algorithmes d'apprentissage automatique avancés, 
+            IAXIS ESG utilise des algorithmes d'apprentissage automatique avancés, 
             entraînés sur des milliers de rapports RSE pour garantir une extraction 
             précise et fiable de vos données carbone.
           </p>

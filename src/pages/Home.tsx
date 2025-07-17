@@ -110,7 +110,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Pourquoi choisir EcoAnalyzer ?
+              Pourquoi choisir IAXIS ESG ?
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Les avantages qui font la différence pour votre entreprise
@@ -138,7 +138,7 @@ const Home = () => {
             Prêt à optimiser votre empreinte carbone ?
           </h2>
           <p className="text-xl text-eco-100 mb-8">
-            Rejoignez les entreprises qui utilisent déjà EcoAnalyzer pour leurs analyses RSE
+            Rejoignez les entreprises qui utilisent déjà IAXIS ESG pour leurs analyses RSE
           </p>
           <Link to="/analyze">
             <Button size="lg" variant="secondary" className="bg-white text-eco-600 hover:bg-gray-100 px-8 py-3 text-lg">
